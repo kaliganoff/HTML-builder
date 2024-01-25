@@ -7,7 +7,7 @@ fs.readdir(path.join(__dirname, 'styles'), { withFileTypes: true }, (error, file
       console.log(error); 
     else {
       files.forEach(file => {
-        if (file.isFile() && file.name.includes("css")) {
+        if (file.isFile() && path.extname(file.name) === '.css') {
             let readStream = fs.createReadStream(path.join(__dirname, 'styles', file.name), 'utf-8');
             readStream.pipe(writeStream);
         }
